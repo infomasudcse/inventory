@@ -1,62 +1,36 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
 
-## About Laravel
+## Inventory with pos
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Project Technologies 
+3.	Laravel  - 8
+4.	Bootstrap - 4
+5.	Datatable
+6.	Jquery - 3
+7.	Ajax
+8.	HTML
+9.	CSS
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Project Final Goal
+1.	Business owner can 
+a.	Create branch of limited quantity with details and can view, edit them where necessary.
+b.	Make employee(salesman) with details including login information and assign them to appropriate branch. These information must be editable .  So that salesman can do login into the system and do his task. Salesman login should be suspend able by business owner. 
+c.	Make category and sub category list so that he can input product details by selecting category and subcategory. Finally he can generate report by categorized product.   
+d.	Create Product Variation. Enter  different value of variations. So that Product it will possible identify different variation of one product.  Therefore input product details and variations with different price and quantity.  Edit and delete of any product in case of mistake. System must show the list of product and variations of different branch. Business owner must have possibility to find out  a product variation available in different branch.  
+e.	Can print bar code of each product. System must create barcode of each variation available of product of same quantity  and print whenever need. Business owner should have possibility of print barcode only a variation of any product if need. 
+f.	Transfer  custom quantity of variation of any Product to desire branch. So that salesman can sell product of his branch. Therefore Business owner can create report of transferred product by date and branch. 
+g.	Be able to see attendance list of employees of different branch.  Attendance of Full month/year  of any employee of any branch.     
+h.	See Expense list of any branch of any period by expense type.  Therefore can able to find hole expense of any branch of any period. 
+i.	Be able to print or save a copy in pdf  of product of hole company/any branch/warehouse. 
+	  
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+2.	Salesman can
+a.	Sales only product of self branch by scan its label smartly.  And be able to make percent / round amount  discount  and print receipt immediately to handover to client. Must be able to re print. Be able to see a product availability in all other branch when selling a product.
+b.	Exchange of product:  by receiving sold products and selling new products. Must create receipt to handover to client.    
+c.	Take attendance of employee in that shop. So that Admin could know about total hour of work, attendant, absent, late and calculate salary when need of an employee.
+d.	Input  various  kind of expenses in that shop including deposit to business owner,  different bill payment, paid salary among employee. So that  he can keeps  balance of that shop  cash drawer.   
+e.	Be able to See today /last week sales report.
 
-## Learning Laravel
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/)**
-- **[OP.GG](https://op.gg)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
