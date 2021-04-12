@@ -14,6 +14,7 @@
 ## Project Final Goal
 
 1.	Business owner can 
+
 a.	Create branch of limited quantity with details and can view, edit them where necessary.
 
 b.	Make employee(salesman) with details including login information and assign them to appropriate branch. These information must be editable .  So that salesman can do login into the system and do his task. Salesman login should be suspend able by business owner. 
