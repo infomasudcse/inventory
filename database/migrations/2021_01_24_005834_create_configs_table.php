@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 
 class CreateConfigsTable extends Migration
 {
@@ -29,6 +30,11 @@ class CreateConfigsTable extends Migration
             $table->string('support_link',50)->default('http://www.refinesoftware.com');    
             $table->timestamps();
         });
+
+        DB::table('configs')->insert([
+            'business_name'=>'My Company'
+        ]);
+
     }
 
     /**
