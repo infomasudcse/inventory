@@ -132,12 +132,12 @@ class HelperController extends Controller
 		//print_r($request->all());
 		$validatedData = $request->validate([            
             'data_origin_inv' =>'required|numeric',                     
-            'qty' => 'required|numeric',
+            'qty' => 'required|numeric|min:1',
             'tobranch'=>'required'
             ]);
 		
-			$this->transfer($validatedData['data_origin_inv'],$validatedData['tobranch'],$validatedData['qty'],'Single-Transfer');	
-				$status = 'Transferred ! ';
+		$status = $this->transfer($validatedData['data_origin_inv'],$validatedData['tobranch'],$validatedData['qty'],'Single-Transfer');	
+		
 			
 		return redirect('inventories')->with('status',$status);
 	}

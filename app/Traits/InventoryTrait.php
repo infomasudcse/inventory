@@ -33,7 +33,8 @@ trait InventoryTrait {
 	}
 
 	function transfer($inventory_id,$branch_to_id,$qty,$comment=''){
-		$user = auth()->user()->id;
+		$msg = '';
+		$user = auth()->user()->id;		
 		$originInventory = Inventory::find($inventory_id);
 		if($originInventory){
 			$remainQty = intval($originInventory->qty) - intval($qty);
@@ -48,6 +49,7 @@ trait InventoryTrait {
 					$newInventory->qty += $qty;
 					$newInventory->save();
 					$trackTransfer = true;
+					$msg .= "Item added to Branch's items.";
 				}else{			
 					//create new
 					$Inventory = ['branch_id' => $branch_to_id,
@@ -59,6 +61,7 @@ trait InventoryTrait {
 			   				'unit_price' => $originInventory->unit_price];
 			   		$newInventory = Inventory::create($Inventory);
 			   		$trackTransfer = true;
+					$msg .= "New Item transfered to Branch .";
 			   }
 			   	if($newInventory){
 					//update old inventory
@@ -72,8 +75,15 @@ trait InventoryTrait {
 			   		$this->saveTransfer($newInventory->sku,$originInventory->branch_id,$newInventory->branch_id,$qty,$user,$comment);
 
 			   	}
-		   	}	
+		   	}else{
+				   $msg = 'Can not transfer more then what you have ! ';
+			   }	
+		}else{
+			$msg = 'Origin of Inventory not found ! ';
 		}
+
+		return $msg;
+
 	}
 
 //end of trait 
