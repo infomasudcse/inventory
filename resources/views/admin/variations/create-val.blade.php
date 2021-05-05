@@ -114,11 +114,11 @@
 
                 <div class="form-group row">
 
-                    <label for="val" class="col-sm-2 col-form-label">Variation Value</label>
+                    <label for="iteminput" class="col-sm-2 col-form-label">Variation Value</label>
 
                     <div class="col-sm-10">
 
-                      <input type="text" name="val" class="form-control is-warning" id="val"  value="{{ old('val') }}">
+                      <input type="text" name="val" class="form-control is-warning" id="iteminput"  value="{{ old('val') }}">
 
                     </div>
 
