@@ -205,16 +205,18 @@ trait ReportTrait{
              	->where('from_branch', $fromBranch)
              	->where('to_branch',$toBranch)
              	->join('inventories','transfers.sku','=','inventories.sku')
-             	->select('transfers.*','inventories.unit_price')
-            	->get();
+             	->select('transfers.created_at','transfers.sku','transfers.from_branch','transfers.to_branch','transfers.qty','inventories.unit_price')
+				 ->groupBy('transfers.created_at','transfers.qty','transfers.sku','transfers.from_branch','transfers.to_branch','inventories.unit_price')				
+				 ->get();
 		}else{
 			$transfer = DB::table('transfers')
+				->join('inventories','transfers.sku','=','inventories.sku')
+             	->select('transfers.created_at','transfers.sku','transfers.from_branch','transfers.to_branch','transfers.qty','inventories.unit_price')
 				->where('transfers.created_at', '>',$from)
-             	->where('transfers.created_at', '<',$to)
-             	->join('inventories','transfers.sku','=','inventories.sku')
-             	->select('transfers.*','inventories.unit_price')
+             	->where('transfers.created_at', '<',$to)				
+				->groupBy('transfers.created_at','transfers.qty','transfers.sku','transfers.from_branch','transfers.to_branch','inventories.unit_price')				
             	->get();
-        }    	
+        }  	
         return $transfer;    	
 	}
 

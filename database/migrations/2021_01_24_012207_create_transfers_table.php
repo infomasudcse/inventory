@@ -15,13 +15,15 @@ class CreateTransfersTable extends Migration
     {
         Schema::create('transfers', function (Blueprint $table) {
             $table->id();
-             $table->string('sku',30);
+            $table->string('sku',30);
             $table->integer('from_branch');
             $table->integer('to_branch');
             $table->integer('qty');
             $table->integer('user_id');
             $table->string('comment',50);
             $table->timestamps();
+            $table->index('sku');
+
         });
     }
 

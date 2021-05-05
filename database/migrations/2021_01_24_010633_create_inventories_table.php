@@ -25,6 +25,7 @@ class CreateInventoriesTable extends Migration
             $table->double('cost_price',8,2);
             $table->double('unit_price',8,2);
             $table->timestamps();
+            $table->index('sku');
         });
     }
 

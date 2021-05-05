@@ -66,6 +66,7 @@ class Report extends Controller
         $date = Date('Y-m-d');
         $data['from_to'] = $date.' / '.$date;       
         $data['transfers'] = $this->getTransfers($date,$date);
+        
         $branches = $this->getBranchesRows();
         $qty = 0;
         $total = 0;        
