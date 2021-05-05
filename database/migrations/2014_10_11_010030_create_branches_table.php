@@ -20,7 +20,9 @@ class CreateBranchesTable extends Migration
             $table->string('name');
             $table->string('address');
             $table->string('phone')->nullable($value = true);
-            $table->string('tax_code')->nullable($value = true);
+            $table->string('bin')->nullable($value = true);
+            $table->string('musak')->nullable($value = true);
+            $table->string('discount')->nullable($value = true);
             $table->timestamps();
         });
 
@@ -29,7 +31,9 @@ class CreateBranchesTable extends Migration
             'name'=>'Head Office',
             'address'=>'Dhaka',
             'phone'=>'01234567890',
-            'tax_code'=>'15151515'
+            'bin'=>'',
+            'musak'=>'',
+            'discount'=>''
         ]);
 
 
