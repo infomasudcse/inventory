@@ -45,7 +45,7 @@ class CategoryController extends Controller
         ]);
         //validate
         $newCategory = new Category;           
-        $newCategory->name = $request->name; 
+        $newCategory->name = ucfirst($request->name); 
         $newCategory->br_code = $request->br_code;           
         $newCategory->tax_code = $request->tax_code;
             if($newCategory->save()){
@@ -96,7 +96,7 @@ class CategoryController extends Controller
 
         //validate
 
-         $category->name = $request->name;
+         $category->name = ucfirst($request->name);
          $category->br_code = $request->br_code;
          $category->tax_code = $request->tax_code;
         if($category->save()){
