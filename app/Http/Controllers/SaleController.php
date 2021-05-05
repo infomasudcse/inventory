@@ -89,6 +89,9 @@ class SaleController extends Controller
     function doSale(Request $request){
     	//get cart Item update inventori
         $cartTotal = $this->getCartTotal();
+        if($cartTotal == 0){
+            $request->session()->push('payment', ['payment_type'=>'none','amount'=>0.00]);
+        }
         $cartTotPayment =  $this->getTotalPayment();
         $changeAmount  = $cartTotal - $cartTotPayment; 
         if($changeAmount <= 0){
@@ -133,7 +136,7 @@ class SaleController extends Controller
                     $inventory->save();
                 }else if($mode == 'return' && $cartItem->qty < 0){
                     //update qty for return
-                    $new_qty =   intval($inventory->qty) +  intval($cartItem->qty);         
+                    $new_qty =   intval($inventory->qty) + ( -1 * intval($cartItem->qty));         
                     $inventory->qty = $new_qty ;
                     $inventory->save();
                 }
