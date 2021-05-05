@@ -12,6 +12,7 @@ class HelperController extends Controller
 {
    use InventoryTrait;
 	function printBarcode(Request $request){
+		$data['title']='Inventory';
 		//print_r($request->all());
 		$validatedData = $request->validate([            
             'sku' =>'required|numeric',                     

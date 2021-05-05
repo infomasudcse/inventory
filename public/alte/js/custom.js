@@ -207,7 +207,7 @@ $('#productsearch').focus();
  $(document).on('keyup','#searchSku', function(){
     var query = $(this).val();   
     var actionUrl = $(this).attr('actionTo');   
-    if(query.length>5){       
+    if(query.length>2){       
        $.ajax({
               type: "GET",
               url: actionUrl+"/"+query,          

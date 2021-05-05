@@ -49,7 +49,7 @@ trait InventoryTrait {
 					$newInventory->qty += $qty;
 					$newInventory->save();
 					$trackTransfer = true;
-					$msg .= "Item added to Branch's items.";
+					$msg .= $newInventory->sku." - Item added to Branch.";
 				}else{			
 					//create new
 					$Inventory = ['branch_id' => $branch_to_id,
@@ -61,7 +61,7 @@ trait InventoryTrait {
 			   				'unit_price' => $originInventory->unit_price];
 			   		$newInventory = Inventory::create($Inventory);
 			   		$trackTransfer = true;
-					$msg .= "New Item transfered to Branch .";
+					$msg .= $newInventory->sku." - Item transfered to Branch .";
 			   }
 			   	if($newInventory){
 					//update old inventory
