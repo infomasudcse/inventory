@@ -92,11 +92,11 @@
 
                 <div class="form-group row">
 
-                    <label for="name" class="col-sm-2 col-form-label">Variation Name</label>
+                    <label for="iteminput" class="col-sm-2 col-form-label">Variation Name</label>
 
                     <div class="col-sm-10">
 
-                      <input type="text" name="name" class="form-control is-warning" id="name"  value="{{ old('name') }}">
+                      <input type="text" name="name" class="form-control is-warning" id="iteminput"  value="{{ old('name') }}">
 
                     </div>
 
