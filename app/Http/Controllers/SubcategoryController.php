@@ -51,7 +51,7 @@ class SubcategoryController extends Controller
         //validate
         $newSubCategory = new Subcategory;           
         $newSubCategory->category_id = $request->category_id;            
-        $newSubCategory->name = $request->name;
+        $newSubCategory->name = ucfirst($request->name);
         $newSubCategory->br_code = $request->br_code;
        
         if($newSubCategory->save()){
@@ -102,7 +102,7 @@ class SubcategoryController extends Controller
         //validate
        // $newSubCategory = new SubCategory;           
         $Subcategory->category_id = $request->category_id;            
-        $Subcategory->name = $request->name;
+        $Subcategory->name = ucfirst($request->name);
         $Subcategory->br_code = $request->br_code;
        
         if($Subcategory->save()){
