@@ -53,7 +53,7 @@ class ItemController extends Controller
         $item = new Item;           
         $item->category_id = $request->category_id;
         $item->subcategory_id = $request->subcategory_id;            
-        $item->name = $request->name;
+        $item->name = ucwords($request->name);
         $item->active = $request->active;
        
         if($item->save()){
@@ -107,7 +107,7 @@ class ItemController extends Controller
         //validate                   
         $item->category_id = $request->category_id;
         $item->subcategory_id = $request->subcategory_id;            
-        $item->name = $request->name;
+        $item->name = ucwords($request->name);
                
         if($item->save()){
             return redirect('items')->with('status', ' Item Updated !');
