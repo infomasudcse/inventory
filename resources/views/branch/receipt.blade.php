@@ -300,7 +300,7 @@
 
         <tr>           
 
-            <td style="text-align:center;"><p>Powered by: {{ $config->support }}</p></td>
+            <td style="text-align:center;"><p>Powered by:<br/> {{ $config->support }}:{{ $config->support_contact }}</p></td>
 
 
 
