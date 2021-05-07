@@ -5,7 +5,7 @@ $('#iteminput').focus();
 
  $('.details').click(function(){
       var targetId = $(this).attr('data-id');
-      $('#details'+targetId).show();
+      $('#details'+targetId).toggle();
     });
 
 //report input modal 

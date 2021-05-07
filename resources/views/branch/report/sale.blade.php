@@ -34,7 +34,8 @@
 
                 <tr><td>{{ $branchinfo->phone }}</td></tr>
 
-                <tr><td style="text-align:right;">Musak: {{ $branchinfo->tax_code }}</td></tr>
+                <tr><td style="text-align:right;">Musak: {{ $branchinfo->musak }}</td></tr>
+                <tr><td style="text-align:right;">Musak: {{ $branchinfo->bin }}</td></tr>
 
               </table>
 
@@ -104,7 +105,7 @@
 
                     @foreach($sales as $sale)
 
-                        <tr class="details" data-id="{{$sale->id}}">
+                        <tr class="details pointer" data-id="{{$sale->id}}">
 
                           <td><a href="{{ url('/sales/receipt/'.$sale->id)}}" class="clink" target="_blank">{{ Helper::viewSaleId($sale->id) }}</a></td>
 
