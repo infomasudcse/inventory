@@ -32,15 +32,15 @@ class SaleController extends Controller
 
 
     function addToCart(Request $request){
-
-        //ob_start();
-    	//print_r($request->all());
+        //validate
     	$validatedData = $request->validate([          
             'sku' => 'required|numeric',
             'mode' => 'required'
         ]);
+        //set variable
         $qty = 0;
         $status='';
+        //get mode and set variable
         $mode = $validatedData['mode'];
         switch($mode){
             case 'sale':
@@ -49,40 +49,37 @@ class SaleController extends Controller
                 $qty = -1;$mode='return';break;
             default:
             $qty = 0;
-
-        } 
-    	//get logged branch
-    	//get inventory + item with sku and branch
-    	//add to cart
-    	//add item category wise tax
-        $branchId = auth()->user()->branch_id;
-        //search inv
-        $itemInventory = $this->getInventory($validatedData['sku'], $branchId);
-        if(!$itemInventory && $qty != 0){
-        	  $status = ' Item Not Found '; 
-             $anyBranchInventory = $this->getInventoryAnyBranch($validatedData['sku']);
-             if(count($anyBranchInventory)>0){
-                $status .= 'in this branch but ';
-                foreach($anyBranchInventory as $otherBranchInventory){
-                    $status .=' found '.$otherBranchInventory->qty.'pcs in '.$otherBranchInventory->branch->title.' , ';
+        }
+        //quantity not set can not sale
+        if($qty === 0){
+            $status .= ' Sale or return ??';
+        }else{ 
+            //get logged branch
+            $branchId = auth()->user()->branch_id;
+            //search inventory
+            $itemInventory = $this->getInventory($validatedData['sku'], $branchId);
+            if(!$itemInventory){
+                //item not found in this branch
+                $status = ' Item Not Found in this branch '; 
+                //search inventory to other branch
+                $anyBranchInventory = $this->getInventoryAnyBranch($validatedData['sku']);
+                if(count($anyBranchInventory)>0){                    
+                    foreach($anyBranchInventory as $otherBranchInventory){
+                        $status .=' but found '.$otherBranchInventory->qty.'pcs in '.$otherBranchInventory->branch->title.' , ';
+                    }
+                }else{
+                    $status .= 'not found any of branch or unable to sale ! ';
                 }
             }else{
-                $status .= 'in any branch or unable to sale ! ';
+                //item found in this branch      
+                $item = $this->getItem($itemInventory->item_id);
+                //add to cart
+                $cart = $this->addItemToCart($itemInventory->sku, $item->name, $qty, $itemInventory->unit_price, 0, $itemInventory->id, $mode,$itemInventory->qty);
+                // $sku,$name,$qty,$price,$weight,$optionId,$mode,$stock
+                $this->setCartTax($cart->rowId, $item->tax_code);
             }
-
-        }else{       
-	        $item = $this->getItem($itemInventory->item_id);
-            $cart = $this->addItemToCart($itemInventory->sku, $item->name, $qty, $itemInventory->unit_price, 0, $itemInventory->id, $mode,$itemInventory->qty);
-
-           // $sku,$name,$qty,$price,$weight,$optionId,$mode,$stock
-
-            $this->setCartTax($cart->rowId, $item->tax_code);
-			//$cart = Cart::add($itemInventory->sku, $item->name, $qty, $itemInventory->unit_price, 0, ['inv_id' => $itemInventory->id, 'mode' => $mode]);
-			//Cart::setTax($cart->rowId, $item->tax_code);
-		}
+        }
 		return redirect('/sales')->with('status',$status);
-        //return redirect()->action([SaleController::class, 'index'],['status',$status]);
-       // return redirect()->route('sale',['status',$status]);
     }
 
    
