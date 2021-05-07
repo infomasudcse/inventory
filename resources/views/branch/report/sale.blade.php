@@ -35,7 +35,7 @@
                 <tr><td>{{ $branchinfo->phone }}</td></tr>
 
                 <tr><td style="text-align:right;">Musak: {{ $branchinfo->musak }}</td></tr>
-                <tr><td style="text-align:right;">Musak: {{ $branchinfo->bin }}</td></tr>
+                <tr><td style="text-align:right;">BIN: {{ $branchinfo->bin }}</td></tr>
 
               </table>
 
