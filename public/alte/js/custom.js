@@ -86,12 +86,27 @@
 
            });      
     });
-    //report inventory    
+    //report inventory
+    
+    $('#inventoryToday').on('show.bs.modal', function (event) {
+      var span = $(event.relatedTarget); // Button that triggered the modal
+      var formAction = span.data('action'); // Extract info from data-* attributes
+      var tokenFrom = span.data('tokenfrom');      
+      var modal = $(this)
+      $.ajax({         
+          url: tokenFrom+"/",
+          cache: false          
+          }).done(function( msg ) { 
+            modal.find('.modal-body #tok').val(msg);
+            modal.find('#actionForm').attr('action',formAction);
+           });      
+    }); 
+
+
      $('#inventoryReportModal').on('show.bs.modal', function (event) {
       var span = $(event.relatedTarget); // Button that triggered the modal
       var formAction = span.data('action'); // Extract info from data-* attributes
-      var tokenFrom = span.data('tokenfrom');
-      var tokeen = '';
+      var tokenFrom = span.data('tokenfrom');      
       var modal = $(this)
       $.ajax({         
           url: tokenFrom+"/",

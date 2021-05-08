@@ -87,7 +87,10 @@ Route::middleware(['auth','role:admin'])->group(function () {
     Route::post('/report/sale/details',[Report::class,'saleDetails']);
     Route::get('/report/distribute/today',[Report::class,'distributeToday']); 
     Route::post('/report/distribute/history',[Report::class,'distributeHistory']);
-    Route::post('/report/presentinventory  ',[Report::class,'presentInventory']);
+    Route::post('/report/presentinventory',[Report::class,'presentInventory']);
+    Route::post('/report/todayinventory',[Report::class,'todayInventory']);
+    
+
    
 });
 

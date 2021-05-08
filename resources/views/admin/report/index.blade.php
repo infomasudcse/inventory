@@ -199,9 +199,8 @@
 
               <div class="card-body" style="display: block;padding:0.75rem;">
 
-                <ol>
-
-                    <li>Today Entry</li>
+                <ol>                    
+                    <li><span data-tokenfrom="{{ url('HelperController/getCSRF') }}" data-action="{{ url('report/todayinventory') }}" data-toggle="modal" data-target="#inventoryToday" class="clink"> Today Inventory</span></li>
 
                     <li><span data-tokenfrom="{{ url('HelperController/getCSRF') }}" data-action="{{ url('report/presentinventory') }}" data-toggle="modal" data-target="#inventoryReportModal" class="clink"> Current Inventory</span></li>
 
@@ -406,6 +405,46 @@
 
 
 <!-- Inventory report mmodal -->
+<!-- inventory Today -->
+<div class="modal fade" id="inventoryToday" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Today Inventory Report Input</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form class="" id="actionForm"  method="POST">
+      <div class="modal-body">
+        <input type="hidden" name="_token" id="tok" value="" />
+        <div class="form-group">
+            <label for="branch" class="col-form-label">Select Branch:</label>
+            <select name="branch" class="form-control" id="branch">
+              <option value="0">All</option>
+              @foreach($branches as $branch)
+                <option value="{{ $branch->id }}">{{ $branch->title }}</option>
+              @endforeach
+            </select>
+          </div>       
+
+      </div>
+
+      <div class="modal-footer">
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+
+      </div>
+
+      </form>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- Inventory Report Modal -->
 <div class="modal fade" id="inventoryReportModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 
   <div class="modal-dialog modal-dialog-centered" role="document">
