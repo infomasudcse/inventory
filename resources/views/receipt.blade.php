@@ -154,7 +154,7 @@
             <td style="text-align:center;"><p><br/><br/><br/>{{ $config->return_policy }}<br/></p></td>  
         </tr>
         <tr>           
-            <td style="text-align:center;"><p>Powered by:<br/> {{ $config->support }}:{{ $config->support_contact }}</p></td>
+            <td style="text-align:center;"><p>Powered by:<br/> {{ $config->support }} : {{ $config->support_contact }}</p></td>
         </tr>
     </table>
 <!-----end receipt--->               

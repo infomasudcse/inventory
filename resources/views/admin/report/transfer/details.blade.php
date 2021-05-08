@@ -53,7 +53,7 @@
           <div class="col">
 
             <h2> Date: {{ $from_to }}</h2>
-
+            <h3>Branch: {{ $from_to_branch }}</h3>
           </div>
 
 

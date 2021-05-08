@@ -64,7 +64,8 @@ class Report extends Controller
 
     function distributeToday(){        
         $date = Date('Y-m-d');
-        $data['from_to'] = $date.' / '.$date;       
+        $data['from_to'] = $date.' / '.$date;
+        $data['from_to_branch'] = '';       
         $data['transfers'] = $this->getTransfers($date,$date);
         
         $branches = $this->getBranchesRows();
@@ -95,8 +96,8 @@ class Report extends Controller
             'frombranch'=>'required',
             'tobranch'=>'required'
             ]);
-        $from = $request->fromDate;
-        $to = $request->toDate;
+        $from = Date('Y-m-d', strtotime($request->fromDate));
+        $to = Date('Y-m-d', strtotime($request->toDate));
 
         $data['from_to'] = $from.' / '.$to;
         $fromBranch = $request->frombranch;
@@ -104,12 +105,13 @@ class Report extends Controller
         
             
         $data['transfers'] = $this->getTransfers($from,$to,$fromBranch,$toBranch);
+       
         $branches = $this->getBranchesRows();
         foreach($branches as $branch){
                 if($fromBranch == $branch->id){ $fromBranch = $branch->name;}
                 if($toBranch == $branch->id){ $toBranch = $branch->name; }
         }         
-        $data['from/To'] = $fromBranch.' -->  '.$toBranch; 
+        $data['from_to_branch'] = $fromBranch.' -->  '.$toBranch; 
         $qty = 0;
         $total = 0;      
         foreach($data['transfers'] as $key=>$val){
@@ -121,7 +123,7 @@ class Report extends Controller
         $data['totQty'] = $qty;
         $data['totTotal'] = $total;
         $data['config'] = $this->getConfig();
-
+      
         return view('admin.report.transfer.details', $data);
     } 
 

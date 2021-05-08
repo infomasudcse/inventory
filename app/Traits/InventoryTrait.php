@@ -36,23 +36,27 @@ trait InventoryTrait {
 		$msg = '';
 		$user = auth()->user()->id;		
 		$originInventory = Inventory::find($inventory_id);
+		
 		if($originInventory){
-			$remainQty = intval($originInventory->qty) - intval($qty);
-			if($remainQty>=0){
-			//save new inventory
-				// check previous inventory then create/update
-				$newInventory = Inventory::where('branch_id',$branch_to_id)->where('sku',$originInventory->sku)->get()->first();
-				//set a variable 
-				$trackTransfer = false;
-				if($newInventory){
-					//update inv
-					$newInventory->qty += $qty;
-					$newInventory->save();
-					$trackTransfer = true;
-					$msg .= $newInventory->sku." - Item added to Branch.";
-				}else{			
-					//create new
-					$Inventory = ['branch_id' => $branch_to_id,
+			//check if from and to branch are same
+			if($originInventory->branch_id != $branch_to_id){
+
+				$remainQty = intval($originInventory->qty) - intval($qty);
+				if($remainQty >= 0 ){
+					//save new inventory
+					// check previous inventory then create/update
+					$newInventory = Inventory::where('branch_id',$branch_to_id)->where('sku',$originInventory->sku)->get()->first();
+					//set a variable 
+					$trackTransfer = false;
+					if($newInventory){
+						//update inv
+						$newInventory->qty += $qty;
+						$newInventory->save();
+						$trackTransfer = true;
+						$msg .= $newInventory->sku." - Item added to Branch.";
+					}else{			
+						//create new
+						$Inventory = ['branch_id' => $branch_to_id,
 			   				'item_id' => $originInventory->item_id,
 			   				'sku' => $originInventory->sku,
 			   				'variation' => $originInventory->variation,
@@ -77,7 +81,10 @@ trait InventoryTrait {
 			   	}
 		   	}else{
 				   $msg = 'Can not transfer more then what you have ! ';
-			   }	
+			   }
+			}else{
+				$msg = 'Can not transfer to same branch ! ';
+			}	
 		}else{
 			$msg = 'Origin of Inventory not found ! ';
 		}

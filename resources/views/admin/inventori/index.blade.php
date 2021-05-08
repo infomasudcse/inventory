@@ -177,13 +177,7 @@
 
                               <span  data-toggle="modal" data-target="#inventoryModal" data-inv="{{ $inventory->id }}" data-whatever="{{ $inventory->sku }}" data-qty="{{ $inventory->qty }}" class="btn mr-2 btn-default btn-sm btn-item-table" title="print Barcode" data-location="{{ url('HelperController/getCSRF') }}"><i class="fas fa-barcode"></i></span>
 
-
-
                               <span  data-toggle="modal" data-target="#transferModal" data-origin_inv_id="{{ $inventory->id }}" data-origin-code="{{ $inventory->sku }}" data-origin-branch="{{ $inventory->branch->name }}" data-origin-qty="{{ $inventory->qty }}" class="btn mr-2 btn-default btn-sm btn-item-table" title="Transfer to another branch"  data-location="{{ url('HelperController/getCSRF') }}"><i class="fas fa-share-square"></i></span>
-
-
-
-
 
                                <a type='button' title='Edit' href=" {{ url('inventories/'.$inventory->id.'/edit') }}" class='btn btn-sm btn-default mr-2 btn-item-table'><i class='fas fa-edit'></i></a>
 
@@ -308,9 +302,7 @@
 
   <div class="modal-dialog modal-dialog-centered" role="document">
 
-    <div class="modal-content">
-
-      
+    <div class="modal-content">      
 
       <div class="modal-header">
 
@@ -325,8 +317,6 @@
       </div>
 
       <form class="" action="{{ url('helper/transferTo') }}" method="POST">
-
-
 
       <div class="modal-body">
 
