@@ -129,17 +129,28 @@ class Report extends Controller
 
     function presentInventory(Request $request){
         
-         $vdata = $request->validate([ 
+        $vdata = $request->validate([ 
             'branch' =>'required',
             'item' =>'required'
             ]);
         $data['inventories'] = $this->getCurrentInventory($vdata['branch'],$vdata['item']);
         $data['summary'] = $this->getCurrentSummary($vdata['branch'],$vdata['item']);
-         $data['config'] = $this->getConfig();
+        $data['config'] = $this->getConfig();
 
-        return view('admin.report.inventory.details',$data); 
+        return view('admin.report.inventory.details',$data);
+    }
 
+    function todayInventory(Request $request){
+        $vdata = $request->validate([ 
+            'branch' =>'required'
+            ]);
+        $to = Date('Y-m-d').' 23:59:59';
+        $from = Date('Y-m-d').' 00:00:01';    
+        $data['inventories'] = $this->getInventory($from, $to, $vdata['branch']);
+        $data['summary'] = $this->getSummary($from, $to, $vdata['branch']);
+        $data['config'] = $this->getConfig();
 
+        return view('admin.report.inventory.details',$data);
     }
 
 

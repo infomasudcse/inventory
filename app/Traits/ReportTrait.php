@@ -290,6 +290,48 @@ trait ReportTrait{
 		return $summary;
 	}
 
+	function getInventory($from, $to, $branchId){
+		if($branchId === '0'){
+			$inventory = DB::table('inventories')	
+						->where('inventories.created_at','>',$from)	
+						->where('inventories.created_at','<',$to)					
+						->join('branches', 'inventories.branch_id', '=', 'branches.id')
+           				->join('items', 'inventories.item_id', '=', 'items.id')
+            			->select('inventories.*', 'branches.title', 'items.name')
+						->get();
+		}else{
+			$inventory = DB::table('inventories')
+						->where('inventories.branch_id',$branchId)	
+						->where('inventories.created_at','>',$from)	
+						->where('inventories.created_at','<',$to)					
+						->join('branches', 'inventories.branch_id', '=', 'branches.id')
+           				->join('items', 'inventories.item_id', '=', 'items.id')
+            			->select('inventories.*', 'branches.title', 'items.name')
+						->get();
+		}
+		return $inventory;
+
+	}
+
+	function getSummary($from, $to, $branchId){
+		if($branchId === '0'){
+			$summary  = DB::table('inventories')						
+					->where('inventories.created_at','>',$from)	
+					->where('inventories.created_at','<',$to)											
+                	->select( DB::raw(" SUM(`qty`) as total_qty, sum(`cost_price`*`qty`) as total_cost, sum(`unit_price`*`qty`) as total_unit "))              		
+					->where('qty','>',0)->get();
+		}else{
+			$summary  = DB::table('inventories')
+					->where('inventories.branch_id',$branchId)	
+					->where('inventories.created_at','>',$from)	
+					->where('inventories.created_at','<',$to)											
+                	->select( DB::raw(" SUM(`qty`) as total_qty, sum(`cost_price`*`qty`) as total_cost, sum(`unit_price`*`qty`) as total_unit "))              		
+					->where('qty','>',0)->get();
+		}
+		return $summary;				
+	}
+
+
 //end
 
 }
