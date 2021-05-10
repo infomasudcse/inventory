@@ -80,58 +80,25 @@
 
 
 
-              <form class="form-horizontal" method="POST" action="{{ url('categories/'.$category->id.'') }}">
+              <form class="form-horizontal" method="POST" action="{{ url('expensetype/'.$expensetype->id.'') }}">
 
                 @csrf
 
                 @method('PUT')
 
-                <div class="card-body">
-
-                  
+                <div class="card-body">                  
 
                 <div class="form-group row">
 
-                    <label for="name" class="col-sm-2 col-form-label">Branch Name</label>
+                    <label for="name" class="col-sm-2 col-form-label">Expense Type Name</label>
 
                     <div class="col-sm-10">
 
-                      <input type="text" name="name"  value="{{ $category->name }}" class="form-control" id="name" >
+                      <input type="text" name="name"  value="{{ $expensetype->typename }}" class="form-control" id="name" >
 
                     </div>
 
                   </div> 
-
-
-
-                  <div class="form-group row">
-
-                    <label for="br" class="col-sm-2 col-form-label">Bar code</label>
-
-                    <div class="col-sm-10">
-
-                      <input type="number" class="form-control is-warning" id="br" name="br_code"  value="{{ $category->br_code }}">
-
-                    </div>
-
-                  </div>                
-
-                 
-
-                  <div class="form-group row">
-
-                    <label for="rp" class="col-sm-2 col-form-label">Tax code</label>
-
-                    <div class="col-sm-10">
-
-                      <input type="text"  value="{{ $category->tax_code }}" class="form-control" id="rp" name="tax_code" >
-
-                    </div>
-
-                  </div>
-
-                 
-
                   
 
                 </div>
@@ -140,9 +107,7 @@
 
                 <div class="card-footer">
 
-                  <button type="submit" class="btn btn-success btn-lg">UPDATE</button>
-
-                  
+                  <button type="submit" class="btn btn-success btn-lg">UPDATE</button>                  
 
                 </div>
 
@@ -165,9 +130,5 @@
       </div><!-- /.container-fluid -->
 
 </div>
-
-
-
-
 
 @endsection

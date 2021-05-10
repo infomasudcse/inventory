@@ -42,7 +42,7 @@ class ExpensetypeController extends Controller
         ]);
         //validate
         $type = new Expensetype;           
-        $type->typename = ucfirst($request->name);       
+        $type->typename = ucwords($request->name);       
             if($type->save()){
                 return redirect('expensetype')->with('status', 'A New Type Just Created!');
             }else{
@@ -69,7 +69,9 @@ class ExpensetypeController extends Controller
      */
     public function edit(Expensetype $expensetype)
     {
-        //
+        
+        return view('admin.expensetype.update',['title'=>$this->title, 'subtitle'=>$this->subtitle,'expensetype'=>$expensetype]);
+    
     }
 
     /**
@@ -81,7 +83,18 @@ class ExpensetypeController extends Controller
      */
     public function update(Request $request, Expensetype $expensetype)
     {
-        //
+        $validatedData = $request->validate([          
+            'name' => 'required|max:30' 
+            
+        ]);
+        //validate                 
+        $expensetype->typename = ucwords($request->name);     
+       
+        if($expensetype->save()){
+            return redirect('expensetype')->with('status', 'Type Updated!');
+        }else{
+            return redirect('expensetype/'.$expensetype->$id.'/edit')->with('status', 'Something went wrong, Try Again');
+        }
     }
 
     /**
