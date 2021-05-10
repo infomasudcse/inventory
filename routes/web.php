@@ -16,6 +16,7 @@ use App\Http\Controllers\Report;
 use App\Http\Controllers\BranchreportController;
 use App\Http\Controllers\BranchTransferController;
 use App\Http\Controllers\PreviewController;
+use App\Http\Controllers\ExpensetypeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -54,6 +55,7 @@ Route::middleware(['auth','role:admin'])->group(function () {
     'variationvals' => VariationvalController::class,
     'items' => ItemController::class,
     'inventories' => InventoryController::class,
+    'expensetype' => ExpensetypeController::class,
     ]);  
     Route::get('/config/changeSystemStatus', [ConfigController::class, 'changeState']);      
     Route::get('/BranchController/getBranch', [BranchController::class,'getBranch']);

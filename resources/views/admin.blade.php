@@ -330,16 +330,26 @@
 
           </li>
 
-          <li class="nav-item">
-
-            <a href="{{ route('configs.index')}}" class="nav-link <?=(($newTitle=='Configuration')?'active':'');?>">
-
+          
+          <li class="nav-item has-treeview <?=(($newTitle=='Configuration')?'menu-open':'');?>">
+            <a href="#" class="nav-link  <?=(($newTitle=='Configuration')?'active':'');?>">
               <i class="nav-icon fas fa-cog"></i>
-
-              <p> Configuration</p>
-
+              <p>Configuration<i class="right fas fa-angle-left"></i></p>
             </a>
-
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ route('expensetype.index') }}" class="nav-link <?=(($subtitle=='Expense-Type')?'active':'');?>">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Expense Type</p>
+                </a>
+              </li>
+               <li class="nav-item">
+                <a href="{{ route('configs.index') }}" class="nav-link <?=(($subtitle=='Config')?'active':'');?>">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>System Configuration</p>
+                </a>
+              </li>
+            </ul>
           </li>
 
         </ul>

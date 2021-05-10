@@ -8,12 +8,13 @@ use Illuminate\Support\Facades\DB;
 
 class ConfigController extends Controller
 {
-    public $title = 'Configuration';
+    public $title = 'Configuration';    
+    public $subtitle = "Config";
 
     function index(){
         $config = Config::where('id',1)->first();
         
-        return view('admin.config',['cf' => $config,'title'=>$this->title]);
+        return view('admin.config',['cf' => $config,'title'=>$this->title,'subtitle'=>$this->subtitle]);
     }
 
     function changeState(){
