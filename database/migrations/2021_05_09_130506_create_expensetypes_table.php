@@ -16,7 +16,7 @@ class CreateExpensetypesTable extends Migration
         Schema::create('expensetypes', function (Blueprint $table) {
             $table->id();
             $table->string('typename');
-            $table->string('active');
+            $table->string('active')->default('1');
             $table->timestamps();
         });
     }

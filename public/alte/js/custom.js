@@ -24,6 +24,8 @@
     $('#variationsvalTable').DataTable({"ajax":'VariationvalController/getVariationval'});
     $('#itemTable').DataTable({"ajax":'ItemController/getItems'});
     $('#inventoriTable').DataTable({"ajax":'InventoryController/getInventory'});
+    $('#expenseTypeTable').DataTable({"ajax":'ExpensetypeController/getExpenseType'});
+    
     //load item suggestion
     $('#item-category').change(function(){    
         var selectedOption = $(this).children("option:selected").val();

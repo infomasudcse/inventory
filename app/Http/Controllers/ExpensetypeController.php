@@ -38,19 +38,15 @@ class ExpensetypeController extends Controller
     {
         //print_r( $request->input());          
         $validatedData = $request->validate([          
-            'name' => 'required|max:30', 
-            'br_code'=>  'required|max:99|min:10|numeric|unique:categories',       
-            'tax_code' => 'required|max:50|numeric'
+            'name' => 'required|max:30'            
         ]);
         //validate
         $type = new Expensetype;           
-        $newCategory->name = ucfirst($request->name); 
-        $newCategory->br_code = $request->br_code;           
-        $newCategory->tax_code = $request->tax_code;
-            if($newCategory->save()){
-                return redirect('categories')->with('status', 'Category Just Created!');
+        $type->typename = ucfirst($request->name);       
+            if($type->save()){
+                return redirect('expensetype')->with('status', 'A New Type Just Created!');
             }else{
-                return redirect('categories/create')->with('status', 'Something went wrong, Try Again');
+                return redirect('expensetype/create')->with('status', 'Something went wrong, Try Again');
             }
     }
 
@@ -97,5 +93,20 @@ class ExpensetypeController extends Controller
     public function destroy(Expensetype $expensetype)
     {
         //
+    }
+
+    public function getExpenseType(){
+        $etype = Expensetype::all();
+         $typeData =[]; 
+         $i=1;       
+         foreach($etype as $type){
+            $action = "<div class='btn-group'>
+                        <a type='button' href='".url('expensetype/'.$type->id.'/edit')."' class='btn btn-default btn-sx'>Edit</a>
+                        </div>";
+
+                $typeData['data'][] = array($i,$type->typename,$action);
+                $i++;
+         }
+        return json_encode($typeData);
     }
 }

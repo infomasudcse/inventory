@@ -98,7 +98,7 @@
 
                   <th>SL.</th>                 
 
-                  <th>Name</th>                            
+                  <th>Type Name</th>                            
 
                   <th>Action</th>
 

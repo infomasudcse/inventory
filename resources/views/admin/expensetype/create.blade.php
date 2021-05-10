@@ -82,7 +82,7 @@
 
                 
 
-              <form class="form-horizontal" action="{{ url('categories') }}" method="POST" >
+              <form class="form-horizontal" action="{{ url('expensetype') }}" method="POST" >
 
                 @csrf
 
@@ -92,7 +92,7 @@
 
                 <div class="form-group row">
 
-                    <label for="iteminput" class="col-sm-2 col-form-label">Category Name</label>
+                    <label for="iteminput" class="col-sm-2 col-form-label">Expense Type Name</label>
 
                     <div class="col-sm-10">
 
@@ -102,59 +102,16 @@
 
                   </div>
 
-                  <div class="form-group row">
-
-                    <label for="br" class="col-sm-2 col-form-label">Bar code</label>
-
-                    <div class="col-sm-10">
-
-                      <input type="number" class="form-control is-warning" id="br" name="br_code"  value="{{ old('br_code') }}" placeholder="10-99">
-
-                    </div>
-
-                  </div>
-
-                 
-
-                  <div class="form-group row">
-
-                    <label for="rp" class="col-sm-2 col-form-label">Tax code</label>
-
-                    <div class="col-sm-10">
-
-                      <input type="number" class="form-control is-warning" id="rp" step=".01" name="tax_code"  value="{{ old('tax_code') }}">
-
-                    </div>
-
-                  </div>
-
-                 
-
-                  
-
                 </div>
 
                 <!-- /.card-body -->
 
                 <div class="card-footer">
-
-                  <button type="submit" class="btn btn-success btn-lg">SAVE</button>
-
-                  
+                  <button type="submit" class="btn btn-success btn-lg">SAVE</button>                 
 
                 </div>
-
                 <!-- /.card-footer -->
-
               </form>
-
-
-
-
-
-
-
-
 
               </div>
 
@@ -171,9 +128,5 @@
       </div><!-- /.container-fluid -->
 
 </div>
-
-
-
-
 
 @endsection

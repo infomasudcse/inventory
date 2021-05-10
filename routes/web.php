@@ -72,8 +72,12 @@ Route::middleware(['auth','role:admin'])->group(function () {
     Route::get('/ItemController/getSuggestion/{id}',[ItemController::class,'getSuggestion']);
     Route::get('/InventoryController/getInventory',[InventoryController::class,'getInventory']);
     Route::get('/InventoryController/searchSku/{id}',[InventoryController::class,'searchSku']);
-  Route::get('/InventoryController/getInventoryById/{id}',[InventoryController::class,'getInventoryById']);
+    Route::get('/InventoryController/getInventoryById/{id}',[InventoryController::class,'getInventoryById']);
+    Route::get('/ExpensetypeController/getExpenseType',[ExpensetypeController::class,'getExpenseType']);
     
+    
+    
+
     Route::get('/HelperController/getCSRF',[HelperController::class,'getCSRF']);
     Route::post('/helper/printBarcode',[HelperController::class,'printBarcode']);
     Route::post('/helper/transferTo',[HelperController::class,'transferTo']);
